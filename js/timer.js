@@ -100,6 +100,18 @@ function playAlarm() {
     audio.play();
 }
 
+// Add event listener for keydown event
+document.addEventListener('keydown', function(event) {
+    // Check if the pressed key is Enter (key code 13)
+    if (event.key === 'Enter' || event.keyCode === 13) {
+        // If the play button is not disabled, click it
+        const playButton = document.getElementById('play-button');
+        if (!playButton.disabled) {
+            playButton.click();
+        }
+    }
+});
+
 window.onload = () => {
     const timeInput = getTimeInput();
     timeLeft = parseTime(timeInput);
