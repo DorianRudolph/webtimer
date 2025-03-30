@@ -1,61 +1,42 @@
 html, body {
     height: 100%;
     margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
 }
 
 body {
     display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     align-items: center;
     justify-content: center;
     background-color: #f0f0f0;
+}
+
+/* Timer container styling */
+#timer-container {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 20px;
 }
 
-h1 {
-    font-size: 5rem;
-    color: #333;
-    margin: 0;
-}
-
-button {
-    padding: 15px 30px;
-    font-size: 1.5rem;
-    margin: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #ddd;
-}
-
-#progress {
-    width: 100%;
-    height: 20px;
-    background-color: #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    margin-top: 20px;
-}
-
-#progress-bar {
-    height: 100%;
-    background-color: #4caf50;
-    width: 0;
-    transition: width 0.1s;
-}
-
-
+/* Timer circle styling */
 #timer-circle {
-    text-align: center;
     position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #timer-display {
-    font-size: 3rem;
+    font-size: 2em;
+    font-weight: bold;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -63,27 +44,63 @@ button:hover {
     text-align: center;
 }
 
+/* Progress ring styling */
+.progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .progress-ring__background {
     fill: transparent;
     stroke: #e6e6e6;
-    stroke-width: 10;
+    stroke-width: 10px;
 }
 
 .progress-ring__progress {
     fill: transparent;
-    stroke: #00aaff;
-    stroke-width: 10;
-    stroke-linecap: round;
+    stroke: #4caf50;
+    stroke-width: 10px;
+    stroke-dasharray: 565.48; /* 2 * PI * 90 */
+    stroke-dashoffset: 565.48;
     transform: rotate(-90deg);
     transform-origin: center;
+    transition: stroke-dashoffset 0.3s;
 }
 
+/* Controls styling */
 #controls {
     margin-top: 20px;
+    display: flex;
+    gap: 10px;
 }
 
-#controls button {
-    font-size: 1rem;
-    margin: 0 5px;
-    padding: 10px 15px;
+button {
+    padding: 8px 16px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Footer styling */
+#page-footer {
+    background-color: #f5f5f5;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto;
+    width: 100%;
+    box-sizing: border-box;
 }
